@@ -1,0 +1,52 @@
+# Mac
+.DS_Store
+
+# Bazel
+/bazel-*
+/external
+/user.bazelrc
+
+# C++
+/compile_commands.json
+.cache
+default.profraw
+
+# Python
+*.pyc
+
+# Node
+**/node_modules
+yarn-error.log
+
+# Typescript
+**/out/
+*.tsbuildinfo
+
+# Next.js
+**/next-env.d.ts
+**/.next
+
+# Rust
+debug/
+target/
+
+# Idea
+**/.idea
+**/.clwb
+
+# Prisma
+**/prisma/client/
+
+# Snyk
+**/.dccache
+
+# playwright output
+test-results/
+playwright-report/
+
+# Prefer yarn install and ignore package-lock
+**/package-lock.json
+
+# Jest
+coverage
+junit.xml
