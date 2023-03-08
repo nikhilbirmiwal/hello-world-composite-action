@@ -2,9 +2,9 @@
 .DS_Store
 
 # Bazel
-/bazel-*
-/external
-/user.bazelrc
+bazel-*
+external
+user.bazelrc
 
 # C++
 /compile_commands.json
