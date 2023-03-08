@@ -3,3 +3,5 @@ echo $GITHUB_PATH
 
 curr_sha=$(git rev-parse HEAD)
 echo $curr_sha
+
+bazel run //tools:bazel-diff
