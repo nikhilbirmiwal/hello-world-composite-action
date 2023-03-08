@@ -4,5 +4,7 @@ description: 'Greet someone'
 runs:
   using: "composite"
   steps:
+    - run: echo Hello World.
+      shell: bash
     - run: goodbye.sh
       shell: bash

@@ -1,1 +1,1 @@
-bazel version 
+echo "Hello"
