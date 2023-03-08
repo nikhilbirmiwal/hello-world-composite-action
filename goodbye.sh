@@ -1,1 +1,1 @@
-bazel run //tools:bazel-diff
+bazel version 
