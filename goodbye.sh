@@ -1,1 +1,1 @@
-echo "Goodbye"
+bazel run //tools:bazel-diff

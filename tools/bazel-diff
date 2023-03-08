@@ -1,0 +1,6 @@
+#!/bin/bash
+
+dir="$(dirname "${BASH_SOURCE[0]}")"
+
+"${dir}/bazel" build //tools:bazel-diff --noshow_loading_progress
+bazel-bin/tools/bazel-diff "$@"
