@@ -1,1 +1,1 @@
-echo "Goodbye"
+bazel version
