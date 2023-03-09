@@ -10,6 +10,7 @@ runs:
         repository: tinder/bazel-diff
         path: tools
 
+    # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
     - name: Run bazel-diff
-      run: ${GITHUB_ACTION_PATH}/script.sh
+      run: bazel run ${GITHUB_ACTION_PATH}/tools:bazel-diff -- bazel-diff -h
       shell: bash
