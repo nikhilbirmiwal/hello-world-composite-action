@@ -4,13 +4,16 @@ description: "Greet someone"
 runs:
   using: "composite"
   steps:
-    - name: Clone bazel-diff repo
+    - name: Checkout Composite Actions Repo
       uses: actions/checkout@v3
-      with: 
-        repository: tinder/bazel-diff
-        path: tools
+      with:
+        repository: nikhilbirmiwal/hello-world-composite-action
+
+    - name: Get bazel-diff Tool
+      run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
+      shell: bash
 
     # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
     - name: Run bazel-diff
-      run: ${GITHUB_ACTION_PATH}/script.sh 
+      run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
