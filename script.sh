@@ -10,4 +10,4 @@ echo $curr_sha
 
 find .
 
-bazel run ./tools/:bazel-diff -- bazel-diff -h
+./tools/bazel-diff-example.sh --version

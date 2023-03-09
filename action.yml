@@ -12,5 +12,5 @@ runs:
 
     # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
     - name: Run bazel-diff
-      run: bazel run ${GITHUB_ACTION_PATH}/tools:bazel-diff -- bazel-diff -h
+      run: ${GITHUB_ACTION_PATH}/script.sh 
       shell: bash
