@@ -8,4 +8,7 @@ echo $curr_sha
 
 echo "Running command"
 
-./tools/bazel-diff-example.sh $bazel_path $workspace_path $curr_sha $curr_sha
+cd tools/ || exit
+chmod a+x bazel-diff-example.sh
+
+./bazel-diff-example.sh "$bazel_path" "$workspace_path" "$curr_sha" "$curr_sha"
