@@ -8,7 +8,5 @@ echo $curr_sha
 
 echo "Running command"
 
-cd tools/ || exit
-chmod a+x bazel-diff-example.sh
-
-./bazel-diff-example.sh "$bazel_path" "$workspace_path" "$curr_sha" "$curr_sha"
+cd tools/ # should be a known tmp directory. maybe trunk-prefixed?
+bazel run :bazel-diff -- --verison # should we even be cloning the repo into the directory?
