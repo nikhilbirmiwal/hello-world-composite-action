@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-find .
+workspace_path=${GITHUB_ACTION_PATH} # may not always be the case?
 
-java -jar bazel-diff.jar -h
+java -jar bazel-diff.jar --workspacePath=$workspace_path 
