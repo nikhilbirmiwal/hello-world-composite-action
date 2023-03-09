@@ -8,5 +8,8 @@ runs:
       shell: bash  
     - name: Checkout actions repo
       uses: actions/checkout@v3
+      with: 
+        repository: tinder/bazel-diff
+        path: main
     - run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
