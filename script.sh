@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-echo "pwd"
-pwd
-
-echo "contents"
-find .
-
-
-bazel_path=$(which bazel)
-
-java -jar bazel-diff.jar generate-hashes --bazelPath=$bazel_path --workspacePath=$(pwd)
+# assumptions made:
+#   - java is installed (should be fine)
+#   - install_bazel_diff was already invoked, and this script is being executed in the same location
+#   - the WORKSPACE file exists at the root of the repo.
+java -jar bazel-diff.jar generate-hashes --workspacePath=$(pwd)
