@@ -13,6 +13,14 @@ runs:
     - name: Get bazel-diff Tool
       run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
       shell: bash
+    
+    - name: Echo New Hash
+      run: echo ${{ github.head_ref }}
+      shell: bash
+
+    - name: Echo Old Hash
+      run: echo ${{ github.base_ref }}
+      shell: bash
 
     # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
     - name: Run bazel-diff
