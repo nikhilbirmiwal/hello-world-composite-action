@@ -1,7 +1,5 @@
-find .
-
 bazel_path=$(which bazel)
-workspace_path=//...
+workspace_path=$GITHUB_ACTION_PATH
 curr_sha=$(git rev-parse HEAD)
 
 echo $bazel_path
