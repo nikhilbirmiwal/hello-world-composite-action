@@ -5,10 +5,12 @@
 workspace_path=$(pwd)
 
 # hashes:
-curr_hash=$(git rev-parse HEAD)
-curr_json_out=./$curr_hash
+HEAD_OUT=./$HEAD_SHA
+BASE_OUT=./$BASE_SHA
 
-echo $curr_hash . "->" $curr_json_out
-java -jar bazel-diff.jar generate-hashes --workspacePath=$workspace_path $curr_json_out
+echo $HEAD_SHA . "->" $HEAD_OUT
+echo $BASE_SHA . "->" $BASE_OUT
 
-cat $curr_json_out
+java -jar bazel-diff.jar generate-hashes --workspacePath=$workspace_path $HEAD_OUT
+
+cat $HEAD_OUT
