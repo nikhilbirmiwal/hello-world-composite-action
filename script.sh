@@ -1,5 +1,5 @@
 bazel_path=$(which bazel)
-workspace_path=$GITHUB_ACTION_PATH
+workspace_path=$GITHUB_ACTION_PATH/WORKSPACE # should not be assumed
 curr_sha=$(git rev-parse HEAD)
 
 echo $bazel_path
