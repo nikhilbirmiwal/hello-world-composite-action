@@ -11,10 +11,10 @@ runs:
         path: tools
 
     - name: Get bazel-diff Tool
-      run: ${GITHUB_ACTION_PATH}/tools/install_bazel_diff.sh
+      run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
       shell: bash
 
     # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
     - name: Run bazel-diff
-      run: ${GITHUB_ACTION_PATH}/tools/script.sh
+      run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
