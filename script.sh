@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-workspace_path=${GITHUB_ACTION_PATH} # may not always be the case?
+bazel_path=$(which bazel)
 
-java -jar bazel-diff.jar generate-hashes --workspacePath=$workspace_path 
+java -jar bazel-diff.jar generate-hashes --bazelPath=$bazel_path --workspacePath=$GITHUB_ACTION_PATH
