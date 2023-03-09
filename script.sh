@@ -7,3 +7,7 @@ pwd
 echo "curr-sha"
 curr_sha=$(git rev-parse HEAD)
 echo $curr_sha
+
+find .
+
+bazel run :bazel-diff -- bazel-diff -h

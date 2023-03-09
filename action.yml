@@ -4,12 +4,12 @@ description: "Greet someone"
 runs:
   using: "composite"
   steps:
-    - run: ${GITHUB_ACTION_PATH}/script.sh
-      shell: bash  
-    - name: Checkout actions repo
+    - name: Clone bazel-diff repo
       uses: actions/checkout@v3
       with: 
         repository: tinder/bazel-diff
-        path: main
-    - run: ${GITHUB_ACTION_PATH}/script.sh
+        path: tools
+
+    - name: Run bazel-diff
+      run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
