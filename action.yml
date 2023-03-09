@@ -8,6 +8,7 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: nikhilbirmiwal/hello-world-composite-action
+        path: ${GITHUB_ACTION_PATH}/tools/
 
     - name: Get bazel-diff Tool
       run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
