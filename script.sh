@@ -8,9 +8,6 @@ workspace_path=$(pwd)
 HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA
 
-# Fetch the latest commits from Git
-git fetch 
-
 git checkout "$HEAD_SHA"
 java -jar bazel-diff.jar generate-hashes --workspacePath=$workspace_path $HEAD_OUT
 
