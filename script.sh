@@ -21,7 +21,7 @@ echo $BAZEL_RC_PATH
 git fetch 
 
 git checkout "$HEAD_SHA"
-java -jar bazel-diff.jar generate-hashes --bazelCommandOptions=--bazelrc=$BAZEL_RC_PATH  --verbose --workspacePath=$workspace_path $HEAD_OUT 
+java -jar bazel-diff.jar generate-hashes --bazelStartupOptions=--bazelrc=$BAZEL_RC_PATH  --workspacePath=$workspace_path $HEAD_OUT 
 
 git checkout "$BASE_SHA"
 java -jar bazel-diff.jar generate-hashes --workspacePath="$workspace_path" "$BASE_OUT"
