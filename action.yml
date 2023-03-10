@@ -1,5 +1,5 @@
-name: "Hello World"
-description: "Greet someone"
+name: "Upload Affected Targets"
+description: "Upload Affected Targets on a pull-request run. Currently only supports Bazel."
 
 runs:
   using: "composite"
@@ -8,8 +8,7 @@ runs:
       run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
       shell: bash
 
-    # requires that the GITHUB_ACTION_PATH has a WORKSPACE file, which I think is reasonable
-    - name: Run bazel-diff
+    - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
       env:
