@@ -4,6 +4,8 @@
 # TODO: Should be overridable
 workspace_path=$(pwd)
 
+find .
+
 # hashes:
 HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA
