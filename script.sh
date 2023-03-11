@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo $GITHUB_WORKSPACE
+
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
 workspace_path=$(pwd)
