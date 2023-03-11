@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo $GITHUB_WORKSPACE
-
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
 workspace_path=$(pwd)
@@ -15,11 +13,11 @@ HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA
 
 # Debug Logs
-echo $HEAD_SHA
-echo $BASE_SHA
-echo $BAZEL_RC_PATH
+echo "github workspace:" $GITHUB_WORKSPACE
+echo "head sha:" $HEAD_SHA
+echo "base sha:" $BASE_SHA
 
-cd $GITHUB_WORKSPACE/tools
+cd $GITHUB_WORKSPACE/tmp
 
 find .
 
