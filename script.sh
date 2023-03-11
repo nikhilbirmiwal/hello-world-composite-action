@@ -17,7 +17,7 @@ echo $HEAD_SHA
 echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
-cat .bazelrc
+find .
 
 # TODO: This shouldn't be hardcoded to tools.
 bazel run //tools:bazel-diff generate-hashes --workspacePath=$workspace_path 
