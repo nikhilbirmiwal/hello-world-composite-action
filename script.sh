@@ -19,7 +19,7 @@ echo $HEAD_SHA
 echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
-cd /tmp/tools
+cd $GITHUB_WORKSPACE/tools
 
 find .
 
