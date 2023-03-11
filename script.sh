@@ -17,10 +17,11 @@ echo $HEAD_SHA
 echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
-cd tools/ 
+cd /tmp/tools
+
+find .
 
 bazel run //:bazel-diff -- -h
-bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path 
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API

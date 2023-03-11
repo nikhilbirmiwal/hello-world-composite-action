@@ -9,7 +9,7 @@ runs:
       with:
         repository: tinder/bazel-diff
         path:
-          tools # TODO: this shouldn't be hardcoded.
+          /tmp/tools # TODO: this shouldn't be hardcoded.
 
     - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/script.sh
