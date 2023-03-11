@@ -7,6 +7,7 @@ runs:
     - name: Get bazel-diff Tool
       uses: actions/checkout@v3
       with:
+        repository: tinder/bazel-diff
         path:
           tools # TODO: this shouldn't be hardcoded.
 
