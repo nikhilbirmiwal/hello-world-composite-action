@@ -5,8 +5,10 @@ runs:
   using: "composite"
   steps:
     - name: Get bazel-diff Tool
-      run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
-      shell: bash
+      uses: actions/checkout@v3
+      with:
+        path:
+          tools # TODO: this shouldn't be hardcoded.
 
     - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/script.sh

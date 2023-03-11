@@ -19,7 +19,8 @@ echo $BAZEL_RC_PATH
 
 cat .bazelrc
 
-java -jar bazel-diff.jar generate-hashes --bazelStartupOptions=--bazelrc=.bazelrc --workspacePath=$workspace_path $HEAD_OUT 
+# TODO: This shouldn't be hardcoded to tools.
+bazel run //tools:bazel-diff generate-hashes --workspacePath=$workspace_path $HEAD_OUT 
 
 cat $HEAD_OUT
 
