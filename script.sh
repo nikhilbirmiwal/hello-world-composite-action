@@ -21,7 +21,7 @@ echo "base sha:" $BASE_SHA
 mv tmp ../tmp
 cd ../tmp
 
-bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path --bazelStartupOptions=$bazelrc_path
+bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path --bazelStartupOptions=--bazelrc=$bazelrc_path
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
