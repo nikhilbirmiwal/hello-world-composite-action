@@ -19,7 +19,12 @@ echo "base sha:" $BASE_SHA
 
 cd $GITHUB_WORKSPACE/tmp
 
+echo "contents of tmp directory"
 find .
+
+
+echo "contents of workspace path"
+find $workspace_path
 
 bazel run //:bazel-diff -- -h
 
