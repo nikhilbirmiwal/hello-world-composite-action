@@ -18,8 +18,8 @@ echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
 # TODO: This shouldn't be hardcoded to tools.
-bazel run //tools:bazel-diff --config=verbose -- bazel-diff -h
-bazel run //tools:bazel-diff --config=verbose -- bazel-diff generate-hashes --workspacePath=$workspace_path 
+bazel run //tools:bazel-diff -- bazel-diff -h
+bazel run //tools:bazel-diff -- bazel-diff generate-hashes --workspacePath=$workspace_path 
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
