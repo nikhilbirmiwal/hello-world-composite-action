@@ -18,6 +18,7 @@ echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
 # TODO: This shouldn't be hardcoded to tools.
+bazel query //...
 bazel run //tools:bazel-diff -- bazel-diff -h
 bazel run //tools:bazel-diff -- bazel-diff generate-hashes --workspacePath=$workspace_path 
 
