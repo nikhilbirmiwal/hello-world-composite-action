@@ -20,9 +20,7 @@ echo $BAZEL_RC_PATH
 cat .bazelrc
 
 # TODO: This shouldn't be hardcoded to tools.
-bazel run //tools:bazel-diff generate-hashes --workspacePath=$workspace_path $HEAD_OUT 
-
-cat $HEAD_OUT
+bazel run //tools:bazel-diff generate-hashes --workspacePath=$workspace_path 
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
