@@ -13,11 +13,10 @@ HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA
 
 # Debug Logs
-echo "github workspace:" $GITHUB_WORKSPACE
 echo "head sha:" $HEAD_SHA
 echo "base sha:" $BASE_SHA
 
-cd $GITHUB_WORKSPACE/tmp
+cd tmp
 
 echo "contents of tmp directory"
 find .
