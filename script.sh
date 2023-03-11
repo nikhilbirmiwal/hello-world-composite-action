@@ -5,7 +5,7 @@ echo $GITHUB_ACTION_PATH
 
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
-workspace_path=$(pwd)
+workspace_path=$GITHUB_ACTION_PATH
 
 # Assumption: a user's bazelrc file exists at the root of the caller's repo, next to the WORKSPACE
 # TODO: Should be overridable
