@@ -3,6 +3,7 @@
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
 workspace_path=$(pwd)
+bazelrc_path=$workspace_path/.bazelrc
 
 # Assumption: a user's bazelrc file exists at the root of the caller's repo, next to the WORKSPACE
 # TODO: Should be overridable
@@ -20,7 +21,7 @@ echo "base sha:" $BASE_SHA
 mv tmp ../tmp
 cd ../tmp
 
-bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path
+bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path --bazelStartupOptions=$bazelrc_path
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
