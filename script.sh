@@ -17,6 +17,8 @@ echo $HEAD_SHA
 echo $BASE_SHA
 echo $BAZEL_RC_PATH
 
+cat .bazelrc
+
 java -jar bazel-diff.jar generate-hashes --workspacePath=$workspace_path $HEAD_OUT 
 
 cat $HEAD_OUT
