@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo pwd
+pwd
 echo $GITHUB_ACTION_PATH
 
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
