@@ -16,16 +16,11 @@ BASE_OUT=./$BASE_SHA
 echo "head sha:" $HEAD_SHA
 echo "base sha:" $BASE_SHA
 
-cd tmp
+# Move the directory so workspaces don't conflict.
+mv tmp ../tmp
+cd ../tmp
 
-echo "contents of tmp directory"
-find .
-
-
-echo "contents of workspace path"
-find $workspace_path
-
-bazel run //:bazel-diff -- -h
+bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
