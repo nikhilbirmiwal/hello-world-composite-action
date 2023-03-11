@@ -19,8 +19,8 @@ echo $BAZEL_RC_PATH
 
 cd tools/ 
 
-bazel run //:bazel-diff -- bazel-diff -h
-bazel run //:bazel-diff -- bazel-diff generate-hashes --workspacePath=$workspace_path 
+bazel run //:bazel-diff -- -h
+bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path 
 
 # TODO: 
 # - Invoke the /uploadAffectedTargets API
