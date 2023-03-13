@@ -5,10 +5,6 @@
 workspace_path=$(pwd)
 bazelrc_path=$workspace_path/.bazelrc
 
-# Assumption: a user's bazelrc file exists at the root of the caller's repo, next to the WORKSPACE
-# TODO: Should be overridable
-BAZEL_RC_PATH=.bazelrc 
-
 # hashes:
 HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA

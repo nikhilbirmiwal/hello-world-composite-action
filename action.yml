@@ -11,6 +11,10 @@ runs:
         path:
           tmp # TODO: this shouldn't be hardcoded.
 
+    - name: Bazel Benchmarks
+      run: ${GITHUB_ACTION_PATH}/bazel_benchmarks.sh
+      shell: bash
+
     - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/script.sh
       shell: bash
