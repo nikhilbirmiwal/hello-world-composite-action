@@ -20,11 +20,13 @@ workspace_path=$(pwd)
 HEAD_SHA=$(git rev-parse HEAD)
 fetch --depth=2 origin "${HEAD_SHA}"
 BASE_SHA=$(git rev-parse HEAD^1)
+THIRD_SHA=$(git rev-parse HEAD^2)
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
 
 echo "Head Sha: " $HEAD_SHA
 echo "Base Sha: " $BASE_SHA
+echo "Third Sha: " $THIRD_SHA
 
 # TODO: Avoid fetching _everything_ from this repo.
 git fetch --quiet
