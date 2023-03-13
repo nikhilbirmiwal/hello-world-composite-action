@@ -10,6 +10,9 @@ runs:
       with:
         distribution: oracle
         java-version: "17"
+      
+    - name: Setup Bazel
+      uses: bazelbuild/setup-bazelisk@v2
 
     - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/upload_affected_targets.sh

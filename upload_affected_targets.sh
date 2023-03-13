@@ -17,14 +17,6 @@ curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/dow
 # TODO: Should be overridable
 workspace_path=$(pwd)
 
-# TODO: Default to bazel path, if it exists.
-# If we are missing Bazel, install it via Bazelisk.
-curl -LO "https://github.com/bazelbuild/bazelisk/releases/download/v1.1.0/bazelisk-linux-amd64"
-mkdir -p "${GITHUB_WORKSPACE}/bin/"
-mv bazelisk-linux-amd64 "${GITHUB_WORKSPACE}/bin/bazel"
-chmod +x "${GITHUB_WORKSPACE}/bin/bazel"
-bazel_path="${GITHUB_WORKSPACE}/bin/bazel"
-
 # Hashes:
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
