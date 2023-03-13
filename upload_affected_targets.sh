@@ -28,11 +28,11 @@ git fetch --quiet
 
 # Generate hashes for the HEAD and BASE shas.
 git checkout --quiet "${BASE_SHA}"
-java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" --bazelPath="${bazel_path}" "${BASE_OUT}"
+java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${BASE_OUT}"
 
 git checkout --quiet "${HEAD_SHA}"
-java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" --bazelPath="${bazel_path}" "${HEAD_OUT}"
+java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${HEAD_OUT}"
 
 # Upload affected targets.
-java -jar bazel-diff.jar get-impacted-targets --bazelPath="${bazel_path}" --startingHashes="${BASE_OUT}" --finalHashes="${HEAD_OUT}"
+java -jar bazel-diff.jar get-impacted-targets --startingHashes="${BASE_OUT}" --finalHashes="${HEAD_OUT}"
 # TODO: Invoke the /uploadAffectedTargets API
