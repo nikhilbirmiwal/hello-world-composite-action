@@ -3,21 +3,21 @@
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
 workspace_path=$(pwd)
-bazelrc_path=$workspace_path/.bazelrc
 
 # hashes:
 HEAD_OUT=./$HEAD_SHA
 BASE_OUT=./$BASE_SHA
 
-# Debug Logs
-echo "head sha:" $HEAD_SHA
-echo "base sha:" $BASE_SHA
+# TODO: Avoid fetching _everything_ from this repo.
+git fetch
 
-# Move the directory so workspaces don't conflict.
-mv tmp ../tmp
-cd ../tmp
+git checkout "$HEAD_SHA"
+java -jar bazel-diff.jar generate-hashes --workspacePath="$workspace_path" "$HEAD_OUT"
 
-bazel run //:bazel-diff -- generate-hashes --workspacePath=$workspace_path --bazelStartupOptions=--bazelrc=$bazelrc_path
+git checkout "$BASE_SHA"
+java -jar bazel-diff.jar generate-hashes --workspacePath="$workspace_path" "$BASE_OUT"
 
-# TODO: 
+java -jar bazel-diff.jar get-impacted-targets --startingHashes="$BASE_OUT" --finalHashes="$HEAD_OUT"
+
+# TODO:
 # - Invoke the /uploadAffectedTargets API

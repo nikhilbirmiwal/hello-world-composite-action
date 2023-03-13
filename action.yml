@@ -4,20 +4,13 @@ description: "Upload Affected Targets on a pull-request run. Currently only supp
 runs:
   using: "composite"
   steps:
-    - name: Bazel Benchmarks
-      run: ${GITHUB_ACTION_PATH}/bazel_benchmarks.sh
+    - name: Install bazel-diff
+      run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
       shell: bash
 
-#    - name: Get bazel-diff Tool
-#      uses: actions/checkout@v3
-#      with:
-#        repository: tinder/bazel-diff
-#        path:
-#          tmp # TODO: this shouldn't be hardcoded.
-
-#    - name: Upload Affected Targets
-#      run: ${GITHUB_ACTION_PATH}/script.sh
-#      shell: bash
-#      env:
-#        HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-#        BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    - name: Upload Affected Targets
+      run: ${GITHUB_ACTION_PATH}/script.sh
+      shell: bash
+      env:
+        HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        BASE_SHA: ${{ github.event.pull_request.base.sha }}
