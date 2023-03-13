@@ -3,11 +3,11 @@
 set -euo pipefail
 
 if [[ -z ${HEAD_SHA} ]]; then
-  exit 2
+	exit 2
 fi
 
 if [[ -z ${BASE_SHA} ]]; then
-  exit 2
+	exit 2
 fi
 
 # Install the bazel-diff JAR. Avoid cloning the repo, as there will be conflicting WORKSPACES.
@@ -16,6 +16,15 @@ curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/dow
 # Assumption: a WORKSPACE file exists at the root of the caller's repo
 # TODO: Should be overridable
 workspace_path=$(pwd)
+bazel_path=$(which bazel)
+
+# If we are missing Bazel, install it via Bazelisk.
+if [[ -z ${bazel_path} ]]; then
+	curl -LO "https://github.com/bazelbuild/bazelisk/releases/download/v1.1.0/bazelisk-linux-amd64"
+	mkdir -p "${GITHUB_WORKSPACE}/bin/"
+	mv bazelisk-linux-amd64 "${GITHUB_WORKSPACE}/bin/bazel"
+	chmod +x "${GITHUB_WORKSPACE}/bin/bazel"
+fi
 
 # Hashes:
 HEAD_OUT=./${HEAD_SHA}
