@@ -1,15 +1,18 @@
-name: "Upload Affected Targets"
-description: "Upload Affected Targets on a pull-request run. Currently only supports Bazel."
+name: Trunk Upload Affected Targets
+author: trunk.io
+description: Trunk.io Github Action to upload Affected Targets
 
 runs:
-  using: "composite"
+  using: composite
   steps:
-    - name: Install bazel-diff
-      run: ${GITHUB_ACTION_PATH}/install_bazel_diff.sh
-      shell: bash
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: oracle
+        java-version: "17"
 
     - name: Upload Affected Targets
-      run: ${GITHUB_ACTION_PATH}/script.sh
+      run: ${GITHUB_ACTION_PATH}/upload_affected_targets.sh
       shell: bash
       env:
         HEAD_SHA: ${{ github.event.pull_request.head.sha }}
