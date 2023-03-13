@@ -2,6 +2,13 @@
 
 set -euo pipefail
 
+fetch() {
+  git -c protocol.version=2 fetch -q \
+    --no-tags \
+    --no-recurse-submodules \
+    "$@"
+}
+
 # Install the bazel-diff JAR. Avoid cloning the repo, as there will be conflicting WORKSPACES.
 curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/download/bazel-diff_deploy.jar
 
@@ -11,9 +18,13 @@ workspace_path=$(pwd)
 
 # Hashes:
 HEAD_SHA=$(git rev-parse HEAD)
-BASE_SHA=$(git rev-parse main) # DO NOT LAND: This needs to be computed
+fetch --depth=2 origin "${head_sha}"
+BASE_SHA=$(git rev-parse HEAD^1)
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
+
+echo "Head Sha: " $HEAD_SHA
+echo "Base Sha: " $BASE_SHA
 
 # TODO: Avoid fetching _everything_ from this repo.
 git fetch --quiet
