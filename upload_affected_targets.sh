@@ -18,7 +18,7 @@ workspace_path=$(pwd)
 
 # Hashes:
 HEAD_SHA=$(git rev-parse HEAD)
-fetch --depth=2 origin "${head_sha}"
+fetch --depth=2 origin "${HEAD_SHA}"
 BASE_SHA=$(git rev-parse HEAD^1)
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
