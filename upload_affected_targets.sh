@@ -17,19 +17,14 @@ curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/dow
 workspace_path=$(pwd)
 
 # Hashes:
-HEAD_SHA=$(git rev-parse HEAD)
-fetch --depth=2 origin "${HEAD_SHA}"
+fetch --depth=2 origin "${HEAD_SHA^2}"
+HEAD_SHA=$(git rev-parse HEAD^2)
 BASE_SHA=$(git rev-parse HEAD^1)
-THIRD_SHA=$(git rev-parse HEAD^2)
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
 
 echo "Head Sha: " $HEAD_SHA
 echo "Base Sha: " $BASE_SHA
-echo "Third Sha: " $THIRD_SHA
-
-# TODO: Avoid fetching _everything_ from this repo.
-git fetch --quiet
 
 # Generate hashes for the HEAD and BASE shas.
 git checkout --quiet "${BASE_SHA}"
