@@ -21,8 +21,6 @@ workspace_path=$(pwd)
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
 
-echo "${bazel_path}"
-
 # TODO: Avoid fetching _everything_ from this repo.
 git fetch --quiet
 
