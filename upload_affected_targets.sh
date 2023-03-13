@@ -2,14 +2,6 @@
 
 set -euo pipefail
 
-if [[ -z ${HEAD_SHA} ]]; then
-  exit 2
-fi
-
-if [[ -z ${BASE_SHA} ]]; then
-  exit 2
-fi
-
 # Install the bazel-diff JAR. Avoid cloning the repo, as there will be conflicting WORKSPACES.
 curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/download/bazel-diff_deploy.jar
 
@@ -18,6 +10,8 @@ curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/dow
 workspace_path=$(pwd)
 
 # Hashes:
+HEAD_SHA=$(git rev-parse HEAD)
+BASE_SHA=$(git rev-parse main) # DO NOT LAND: This needs to be computed
 HEAD_OUT=./${HEAD_SHA}
 BASE_OUT=./${BASE_SHA}
 

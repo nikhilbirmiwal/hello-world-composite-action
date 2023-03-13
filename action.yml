@@ -17,6 +17,3 @@ runs:
     - name: Upload Affected Targets
       run: ${GITHUB_ACTION_PATH}/upload_affected_targets.sh
       shell: bash
-      env:
-        HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        BASE_SHA: ${{ github.event.pull_request.base.sha }}
