@@ -17,22 +17,23 @@ curl -Lo bazel-diff.jar https://github.com/Tinder/bazel-diff/releases/latest/dow
 workspace_path=$(pwd)
 
 # Hashes:
-fetch --depth=2 origin "${HEAD_SHA^2}"
-HEAD_SHA=$(git rev-parse HEAD^2)
-BASE_SHA=$(git rev-parse HEAD^1)
-HEAD_OUT=./${HEAD_SHA}
-BASE_OUT=./${BASE_SHA}
+head_sha=$(git rev-parse HEAD)
+fetch --depth=2 origin "${head_sha}"
+upstream=$(git rev-parse HEAD^1)
+git_commit=$(git rev-parse HEAD^2)
+upstream_out=./${upstream}
+git_commit_out=./${git_commit}
 
-echo "Head Sha: " $HEAD_SHA
-echo "Base Sha: " $BASE_SHA
+echo "Upstream Sha: " $upstream
+echo "Git Commit Sha: " $git_commit
 
 # Generate hashes for the HEAD and BASE shas.
-git checkout --quiet "${BASE_SHA}"
-java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${BASE_OUT}"
+git checkout --quiet "${git_commit}"
+java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${git_commit_out}"
 
-git checkout --quiet "${HEAD_SHA}"
-java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${HEAD_OUT}"
+git checkout --quiet "${upstream}"
+java -jar bazel-diff.jar generate-hashes --workspacePath="${workspace_path}" "${upstream_out}"
 
 # Upload affected targets.
-java -jar bazel-diff.jar get-impacted-targets --startingHashes="${BASE_OUT}" --finalHashes="${HEAD_OUT}"
+java -jar bazel-diff.jar get-impacted-targets --startingHashes="${upstream_out}" --finalHashes="${git_commit_out}"
 # TODO: Invoke the /uploadAffectedTargets API
